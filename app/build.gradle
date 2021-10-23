@@ -4,7 +4,9 @@ plugins {
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
 }
-
+def apiKeyFile = rootProject.file("apikey.properties")
+def apiKeyProperties = new Properties()
+apiKeyProperties.load(new FileInputStream(apiKeyFile))
 android {
     compileSdk 31
 
@@ -16,6 +18,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField('String','API_KEY',apiKeyProperties['API_KEY'])
         vectorDrawables {
             useSupportLibrary true
         }
