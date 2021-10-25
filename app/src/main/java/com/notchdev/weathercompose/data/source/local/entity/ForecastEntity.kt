@@ -11,7 +11,7 @@ data class ForecastEntity(
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    var id: Int,
+    var id: Int = 0,
 
     @Embedded
     var city: CityEntity?,

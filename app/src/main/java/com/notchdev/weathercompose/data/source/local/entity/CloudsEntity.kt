@@ -6,5 +6,5 @@ import androidx.room.Entity
 @Entity(tableName = "Clouds")
 data class CloudsEntity(
     @ColumnInfo(name = "all")
-    var all: Int
+    var all: Int?
 )

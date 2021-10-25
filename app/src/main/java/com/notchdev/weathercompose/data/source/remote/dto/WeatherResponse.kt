@@ -1,6 +1,7 @@
 package com.notchdev.weathercompose.data.source.remote.dto
 
 
+import com.notchdev.weathercompose.data.source.local.entity.CurrentWeatherEntity
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -15,7 +16,7 @@ data class WeatherResponse(
     @Json(name = "coord")
     val coord: Coord,
     @Json(name = "dt")
-    val dt: Int,
+    val dt: Long,
     @Json(name = "id")
     val id: Int,
     @Json(name = "main")
@@ -32,4 +33,19 @@ data class WeatherResponse(
     val weather: List<WeatherItem>,
     @Json(name = "wind")
     val wind: Wind
-)
+) {
+
+    fun toWeatherEntity(): CurrentWeatherEntity {
+        return CurrentWeatherEntity(
+            visibility = visibility,
+            timezone = timezone,
+            main = main.toMainEntity(),
+            clouds = clouds.toCloudEntity(),
+            dt = dt,
+            weather = weather,
+            name = name,
+            base = base,
+            wind = wind.toWindEntity()
+        )
+    }
+}

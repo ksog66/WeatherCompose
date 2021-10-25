@@ -1,5 +1,6 @@
 package com.notchdev.weathercompose.data.source.remote.dto
 
+import com.notchdev.weathercompose.data.source.local.entity.ForecastEntity
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -20,4 +21,11 @@ data class ForecastResponse(
 
     @Json(name = "list")
     val list: List<ListItem>?
-)
+) {
+    fun toForecastEntity(): ForecastEntity {
+        return ForecastEntity(
+            city = city?.toCityEntity(),
+            list = list
+        )
+    }
+}

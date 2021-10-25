@@ -1,17 +1,15 @@
 package com.notchdev.weathercompose.domain.repository
 
-import androidx.lifecycle.LiveData
 import com.notchdev.weathercompose.common.Resource
 import com.notchdev.weathercompose.data.source.local.entity.CurrentWeatherEntity
 import com.notchdev.weathercompose.data.source.local.entity.ForecastEntity
-import com.notchdev.weathercompose.data.source.remote.dto.ForecastResponse
-import com.notchdev.weathercompose.data.source.remote.dto.WeatherResponse
+import kotlinx.coroutines.flow.Flow
 
 interface WeatherRepository {
 
-    fun getCurrentWeather(lat:Double,long:Double): LiveData<Resource<CurrentWeatherEntity>>
+    fun getCurrentWeather(lat:Double,long:Double): Flow<Resource<CurrentWeatherEntity>>
 
-    fun getSpecificWeather(location:String): LiveData<Resource<CurrentWeatherEntity>>
+    fun getSpecificWeather(location:String): Flow<Resource<CurrentWeatherEntity>>
 
-    fun getWeatherForecast(cityId:String): LiveData<Resource<ForecastEntity>>
+    fun getWeatherForecast(cityId:String): Flow<Resource<ForecastEntity>>
 }

@@ -10,14 +10,13 @@ class WeatherLocalDataSource @Inject constructor(
     private val currentWeatherDao: CurrentWeatherDao,
     private val forecastDao: ForecastDao
 ) {
-    suspend fun getCurrentWeather() = currentWeatherDao.getCurrentWeather()
+    fun getCurrentWeather() = currentWeatherDao.getCurrentWeather()
 
-    suspend fun getAllCurrentWeather() = currentWeatherDao.getAllCurrentWeather()
 
     suspend fun insertCurrentWeather(weatherEntity: CurrentWeatherEntity) =
         currentWeatherDao.deleteAndInsert(weatherEntity)
 
-    suspend fun getWeatherForecast() = forecastDao.getAllWeatherForecast()
+    fun getWeatherForecast() = forecastDao.getAllWeatherForecast()
 
     suspend fun insertWeatherForecast(forecastEntity: ForecastEntity) =
         forecastDao.deleteAndInsertForecast(

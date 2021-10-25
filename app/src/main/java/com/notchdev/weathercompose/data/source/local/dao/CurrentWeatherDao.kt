@@ -2,6 +2,7 @@ package com.notchdev.weathercompose.data.source.local.dao
 
 import androidx.room.*
 import com.notchdev.weathercompose.data.source.local.entity.CurrentWeatherEntity
+import kotlinx.coroutines.flow.Flow
 
 
 @Dao
@@ -16,10 +17,7 @@ interface CurrentWeatherDao {
         insertCurrentWeather(currentWeatherEntity)
     }
     @Query("SELECT* FROM currentweather ORDER BY unique_id DESC LIMIT 1")
-    suspend fun getCurrentWeather(): CurrentWeatherEntity
-
-    @Query("SELECT * FROM currentweather ORDER BY unique_id DESC")
-    suspend fun getAllCurrentWeather(): List<CurrentWeatherEntity>
+    fun getCurrentWeather(): Flow<CurrentWeatherEntity>
 
     @Query("DELETE FROM currentWeather")
     suspend fun deleteAllWeather()
