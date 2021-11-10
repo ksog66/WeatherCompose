@@ -18,7 +18,7 @@ interface WeatherApi {
     @GET("/data/2.5/weather")
     suspend fun getCurrentWeather(
         @Query("lat") latitude:Double,
-        @Query("long") longitude: Double,
+        @Query("lon") longitude: Double,
         @Query("appid") apiKey:String
     ) : Response<WeatherResponse>
 

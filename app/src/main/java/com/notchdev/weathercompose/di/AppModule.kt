@@ -2,6 +2,7 @@ package com.notchdev.weathercompose.di
 
 import android.content.Context
 import com.notchdev.weathercompose.common.DispatcherProvider
+import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -31,4 +32,10 @@ object AppModule {
     @Singleton
     @Provides
     fun provideContext(@ApplicationContext context: Context) = context
+
+    @Singleton
+    @Provides
+    fun provideMoshiInstance(): Moshi {
+        return Moshi.Builder().build()
+    }
 }

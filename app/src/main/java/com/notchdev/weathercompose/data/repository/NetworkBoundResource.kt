@@ -21,8 +21,8 @@ inline fun <ResultType,RequestType> networkBoundResource(
            try {
                saveFetchResult(fetch())
                query().map { Resource.Success(it)}
-           } catch (throwable: Throwable) {
-               query().map { Resource.Error(throwable,it) }
+           } catch (exception: Exception) {
+               query().map { Resource.Error(exception.localizedMessage ?: "Unexpected Error",it) }
            }
         } else {
             query().map { Resource.Success(it) }

@@ -12,6 +12,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import javax.inject.Singleton
 
 
 @Module
@@ -20,6 +21,7 @@ object NetworkModule {
 
 
     @Provides
+    @Singleton
     fun provideWeatherRepository(
         localDataSource: WeatherLocalDataSource,
         remoteDataSource: WeatherRemoteDataSource
@@ -32,6 +34,7 @@ object NetworkModule {
 
 
     @Provides
+    @Singleton
     fun provideWeatherAPI(): WeatherApi {
         return Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)

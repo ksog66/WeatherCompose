@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">WeatherCompose</string>
+    <string name="location_permission_content_description">Location Icon</string>
+    <string name="location_permission_description">The app needs your permission to access your current location to display the weather.</string>
+    <string name="location_permission_continue">Great!</string>
+    <string name="location_permission_not_available">The app cannot work without location permission. Please grant it in the app\'s settings to continue.</string>
 </resources>
